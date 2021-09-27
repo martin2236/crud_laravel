@@ -17,6 +17,7 @@
                         <th class="border px-4 py-2">NOMBRE</th>
                         <th class="border px-4 py-2">DESCRIPCION</th>
                         <th class="border px-4 py-2">PRECIO</th>
+                        <th class="border px-4 py-2">CATEGORIA</th>
                         <th class="border px-4 py-2">IMAGEN</th>
                         <th class="border px-4 py-2">ACCIONES</th>
                     </tr>  
@@ -24,23 +25,24 @@
                 <tbody>
                     @foreach ($productos as $producto)
                     <tr>
-                        <td style="display: none;">{{$producto->id}}</td>
-                        <td>{{$producto->nombre}}</td>
-                        <td>{{$producto->descripcion}}</td>
-                        <td>{{$producto->precio}}</td>
+                        <td class="text-center" style="display: none;">{{$producto->id}}</td>
+                        <td class="text-center">{{$producto->nombre}}</td>
+                        <td class="text-center">{{$producto->descripcion}}</td>
+                        <td class="text-center">${{$producto->precio}}</td>
+                        <td class="text-center">{{$producto->categoria}}</td>
                         <td  class="border px-14 py-1">
                             <img src="/imagen/{{$producto->imagen}}" width="60%">
                         </td>                        
                         <td class="border px-4 py-2">
                             <div class="flex justify-center rounded-lg text-lg" role="group">
                                 <!-- botón editar -->
-                                <a href="{{ route('productos.edit', $producto->id) }}" class="rounded bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4">Editar</a>
+                                <a href="{{ route('productos.edit', $producto->id) }}" class="rounded bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4">Editar</a>
 
                                 <!-- botón borrar -->
                                 <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="formEliminar">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="rounded bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4">Borrar</button>
+                                    <button type="submit" class="rounded bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4">Borrar</button>
                                 </form>
                             </div>
                         </td>

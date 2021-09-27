@@ -21,9 +21,20 @@
                     <input name="descripcion" value="{{ $producto->descripcion }}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" />
                 </div>
                 <div class="grid grid-cols-1">
-                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre:</label>
-                        <input name="precio" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="number" />
+                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Precio:</label>
+                        <input name="precio" value="{{$producto->precio }}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="number" />
                     </div>
+                    <div class="grid grid-cols-1">
+                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoria:</label>
+                        <select name="categoria" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required>
+                        <option value="">{{$producto->categoria }}</option>
+                        <option value="desayuno">desayuno</option>
+                        <option value="almuerzo">almuerzo</option>
+                        <option value="cena">cena</option>
+                        <option value="bebida">bebida</option>
+                        </select>
+                    </div>
+
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">

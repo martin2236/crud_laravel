@@ -37,7 +37,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required', 'descripcion' => 'required','precio' => 'required', 'imagen' => 'required|image|mimes:jpeg,png,svg|max:1024'
+            'nombre' => 'required', 'descripcion' => 'required','precio' => 'required|min:3|max:8','categoria' => 'required', 'imagen' => 'required|image|mimes:jpeg,png,svg|max:1024'
         ]);
 
          $producto = $request->all();
@@ -70,7 +70,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Producto $producto)
     {
         return view('productos.editar', compact('producto'));
     }
@@ -85,7 +85,7 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $request->validate([
-            'nombre' => 'required', 'descripcion' => 'required', 'precio' => 'required'
+            'nombre' => 'required', 'descripcion' => 'required', 'precio' => 'required','categoria' => 'required'
         ]);
          $prod = $request->all();
          if($imagen = $request->file('imagen')){

@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
-
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,10 @@ use App\Http\Controllers\ProductoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[App\Http\Controllers\MenuController ::class, 'index'] );
+
+Route::get('/login', [App\Http\Controllers\LoginController ::class, 'index'])->name('login');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group( function () {
     route::resource('/productos',ProductoController::class);
